@@ -1,44 +1,68 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <title>p5 WEBGL Example</title>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script>
+<style>
+h1 {
+  color: Navy;
+  font-family: Times New Roman", Times, serif;
+  font-size: 500%;
+  }
+p {
+  color: navy;
+  font-family: courier;
+  font-size: 100%;
+  border: 2px solid powderblue;
+  padding: 30px;
+  margin: 50px;
+  
+}
+c {
+  color: navy;
+  font-family: courier;
+  font-size: 70%;
+  border: 2px solid black;
+  padding: 20px;
+  margin: 20px;
+
+
+</style>
 </head>
 <body>
-  <p>hello im anonymous</p>
 
-  <script>
-    function setup() {
-      createCanvas(710, 400, WEBGL);
-      angleMode(DEGREES);
-      strokeWeight(5);
-      noFill();
-      stroke(32, 8, 64);
-    }
+<h1>Haoxuan Lu's website</h1>
+<p>Hello, my name is Haoxuan and welcome to my website!</p>
+<p>This is a website showcasing my coding skill.</p>
+<p>This is a website that is also supposed to show my ability to code.</p>
+<p>This website will include links, as well as a few interactive buttons.</p>
 
-    function draw() {
-      background(250, 180, 200);
 
-      // Adjust camera with mouse
-      orbitControl();
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
 
-      // Create sphere of cubes
-      for (let zAngle = 0; zAngle < 180; zAngle += 30) {
-        for (let xAngle = 0; xAngle < 360; xAngle += 30) {
-          push();
+<c id="demo"></c>
 
-          rotateZ(zAngle);
-          rotateX(xAngle);
+<script>
+function light(sw) {
+  var pic;
+  if (sw == 0) {
+    pic = "pic_bulboff.gif"
+  } else {
+    pic = "pic_bulbon.gif"
+  }
+  document.getElementById('myImage').src = pic;
+}
+</script>
 
-          translate(0, 400, 0);
-          box(20);
+<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
 
-          pop();
-        }
-      }
-    }
-  </script>
+<p>
+<button type="button" onclick="light(1)">Light On</button>
+<button type="button" onclick="light(0)">Light Off</button>
+</p>
+
+
+
 </body>
 </html>
-
