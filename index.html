@@ -1,68 +1,162 @@
-
 <!DOCTYPE html>
 <html>
 <head>
+<title>Haoxuan Lu's Website</title>
+
 <style>
+
+/* Theme variables */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #007bff;
+  --card-bg: #f4f4f4;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --accent-color: #64ffda;
+  --card-bg: #1e1e1e;
+}
+
+/* Page styling */
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+
+  transition: background-color 0.5s ease, color 0.5s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+/* Heading */
+
 h1 {
-  color: Navy;
-  font-family: Times New Roman", Times, serif;
+  color: var(--text-color);
+  font-family: "Times New Roman", Times, serif;
   font-size: 500%;
-  }
+}
+
+/* Paragraphs */
+
 p {
-  color: navy;
+  color: var(--text-color);
   font-family: courier;
   font-size: 100%;
   border: 2px solid powderblue;
   padding: 30px;
-  margin: 50px;
-  
-}
-c {
-  color: navy;
-  font-family: courier;
-  font-size: 70%;
-  border: 2px solid black;
-  padding: 20px;
   margin: 20px;
+}
 
+/* Card */
+
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+
+  transition: background-color 0.5s ease;
+}
+
+/* Buttons */
+
+button {
+  background-color: var(--accent-color);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
 
 </style>
 </head>
+
 <body>
 
-<h1>Haoxuan Lu's website</h1>
+<h1>Haoxuan Lu's Website</h1>
+
 <p>Hello, my name is Haoxuan and welcome to my website!</p>
-<p>This is a website showcasing my coding skill.</p>
-<p>This is a website that is also supposed to show my ability to code.</p>
-<p>This website will include links, as well as a few interactive buttons.</p>
 
+<p>This website showcases my coding skills.</p>
 
-<button type="button"
-onclick="document.getElementById('demo').innerHTML = Date()">
-Click me to display Date and Time.</button>
+<p>This website includes links and interactive buttons.</p>
 
-<c id="demo"></c>
+<!-- Photo link -->
+
+<a href="https://photos.app.goo.gl/jaiSRGcr99HVfE2YA" target="_blank">
+Click link to view my resume
+</a>
+
+<!-- Date button -->
+
+<button onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time
+</button>
+
+<p id="demo"></p>
+
+<!-- Dark mode section -->
+
+<div class="card">
+
+<h2>Theme Switcher</h2>
+
+<p>Click the button below to toggle light and dark mode.</p>
+
+<button id="theme-toggle">Toggle Dark Mode</button>
+
+</div>
+
+<br>
 
 <script>
-function light(sw) {
-  var pic;
-  if (sw == 0) {
-    pic = "pic_bulboff.gif"
-  } else {
-    pic = "pic_bulbon.gif"
-  }
-  document.getElementById('myImage').src = pic;
+
+const btn = document.getElementById("theme-toggle");
+const currentTheme = localStorage.getItem("theme");
+
+/* Load saved theme */
+
+if (currentTheme === "dark") {
+  document.body.classList.add("dark-mode");
 }
+
+/* Toggle theme */
+
+btn.addEventListener("click", function() {
+
+  document.body.classList.toggle("dark-mode");
+
+  let theme = "light";
+
+  if (document.body.classList.contains("dark-mode")) {
+    theme = "dark";
+  }
+
+  localStorage.setItem("theme", theme);
+
+
+});
+
+
+
 </script>
-
-<img id="myImage" src="pic_bulboff.gif" width="100" height="180">
-
-<p>
-<button type="button" onclick="light(1)">Light On</button>
-<button type="button" onclick="light(0)">Light Off</button>
-</p>
-
-
 
 </body>
 </html>
+
